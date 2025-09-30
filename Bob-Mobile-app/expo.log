@@ -1,0 +1,8 @@
+nohup: ignoring input
+Starting project at /home/o/Akedemia25#1/Bob
+› Port 8081 is running this app in another window
+  /home/o/Akedemia25#1/Bob (pid 2151)
+Input is required, but 'npx expo' is in non-interactive mode.
+Required input:
+> Use port 8082 instead?
+› Skipping dev server
