@@ -14,9 +14,12 @@ import * as Location from 'expo-location';
 
 const getUUID = async() => {
 	try{
-		const theUUID = await AsyncStorage.getItem('uuidkey');
-		if (theUUID == null) { const theUUID = uuid.v4(); await AyncStorage.setItem('uuidkey', theUUID) }
+		let theUUID = await AsyncStorage.getItem('uuidkey');
+		if (!theUUID) { theUUID = uuid.v4(); await AsyncStorage.setItem('uuidkey', theUUID) }
+		console.log(theUUID)
+		return theUUID;
 	} catch(e) {console.error("illiterate", e)}
+
 }
 
 const createStyles = (colorScheme: 'light' | 'dark') => StyleSheet.create({
@@ -62,7 +65,7 @@ const [symptoms, setSymptoms] = useState({
 useEffect(() => { sendit(); }, [symptoms]);
 
 async function sendit(){
-	const theUUID = getUUID;
+	const theUUID = await getUUID();
 
 	const url = "http://192.168.0.248:8000/";
 	try {
