@@ -29,8 +29,7 @@ cursor = conn.cursor()
 cursor.execute('''CREATE TABLE IF NOT EXISTS symptomlogs (id INTEGER PRIMARY KEY,timestamp INT, uuid TEXT, cough BIT, fever BIT, nausea BIT, breathing BIT, tiredness BIT, mood BIT, massloss BIT, pain BIT, longitude DECIMAL(9, 7), latitude DECIMAL(9, 7) )''')
 
 def savetodb(data):
-# data format data = ({[False, False, False, False, False, False, False, False], [4233, 2345], "gfergrg43780y04982r7fyw"})
-# {'symptoms': [False, False, False, True, False, False, False, False], 'location': {'coords': {'accuracy': 100, 'longitude': 27.9953875, 'altitude': 1753.9000244140625, 'heading': 0, 'latitude': -26.2005381, 'altitudeAccuracy': 100, 'speed': 0}, 'mocked': False, 'timestamp': 1759257085426}, theUUID: "fbiwe09832923r90cvuijuJKBn"} <- real data
+# {'symptoms': [False, False, False, False, False, True, False, False], 'location': {'coords': {'accuracy': 100, 'longitude': 27.0000000, 'altitude': 1753.0000244140625, 'heading': 0, 'latitude': -26.0000000, 'altitudeAccuracy': 100, 'speed': 0}, 'mocked': False, 'timestamp': 1759344012824}, 'theUUID': 'c2afd46c-11c3-4c06-a49c-d3f0f570859a'} <- real data
     symptoms = data['symptoms']
     location_longatude = data['location']['coords']['longitude']
     location_latitude = data['location']['coords']['latitude']
