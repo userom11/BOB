@@ -4,7 +4,7 @@ from kan import *
 
 # conn = sqlite3.connect('thedbb.db')
 # cursor = conn.cursor
-# cursor.execute('''CREATE TABLE IF NOT EXISTS symptomlogs (id INTEGER PRIMARY KEY,timestamp INT, uuid TEXT, cough BIT, fever BIT, nausea BIT, breathing BIT, tiredness BIT, mood BIT, massloss BIT, pain BIT, x INT, y INT)''')
+# rows = cursor.fetchall()
 
 def spreadingAlg(loc, widthOfBreakOut):
     loc = loc
@@ -112,5 +112,3 @@ plt.xlabel('Training Examples Completed')
 plt.ylabel('Mean Squared Error')
 plt.title('Scattered Loss at points of Learning')
 plt.show()
-
-# cursor.execute(''' INSERT INTO symptomlogs (time, uuid, cough, fever, nausea, breathing, tiredness, mood, massloss, pain, x, y) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)''', (time, int_index, symptoms, location ))
