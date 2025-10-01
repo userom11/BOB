@@ -22,22 +22,22 @@ class main(BaseHTTPRequestHandler):
         response = {'status': 'success', 'received': data}
         self.wfile.write(json.dumps(response).encode('utf-8'))
         print(data)
-        # savetodb(data)
+        savetodb(data)
 
 conn = sqlite3.connect('thedbb.db')
 cursor = conn.cursor()
 cursor.execute('''CREATE TABLE IF NOT EXISTS symptomlogs (id INTEGER PRIMARY KEY,timestamp INT, uuid TEXT, cough BIT, fever BIT, nausea BIT, breathing BIT, tiredness BIT, mood BIT, massloss BIT, pain BIT, longitude DECIMAL(9, 7), latitude DECIMAL(9, 7) )''')
 
 def savetodb(data):
-# {'symptoms': [False, False, False, False, False, True, False, False], 'location': {'coords': {'accuracy': 100, 'longitude': 27.0000000, 'altitude': 1753.0000244140625, 'heading': 0, 'latitude': -26.0000000, 'altitudeAccuracy': 100, 'speed': 0}, 'mocked': False, 'timestamp': 1759344012824}, 'theUUID': 'c2afd46c-11c3-4c06-a49c-d3f0f570859a'} <- real data
+# {'symptoms': [False, False, False, False, False, True, False, False], 'location': {'coords': {'accuracy': 100, 'longitude': 27.0000000, 'altitude': 1753.0000244140625, 'heading': 0, 'latitude': -26.0000000, 'altitudeAccuracy': 100, 'speed': 0}, 'mocked': False, 'timestamp': 1759344012824}, 'theUUID': 'c2afd46c-11c3-4c06-a49c-d3f0f570859a'} <- real data (almost, just switch single quotes to double)
     symptoms = data['symptoms']
     location_longatude = data['location']['coords']['longitude']
     location_latitude = data['location']['coords']['latitude']
     uid = data['theUUID']
-    
+    print("staffs i got:",symptoms, location_longatude, location_latitude, uid)
     cursor.execute('''
-    INSERT INTO symptomlogs (time, uuid, cough, fever, nausea, breathing, tiredness, mood, massloss, pain, longitude, latitude)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+    INSERT INTO symptomlogs (timestamp, uuid, cough, fever, nausea, breathing, tiredness, mood, massloss, pain, longitude, latitude)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     ''', (time.time(), uid, *symptoms, location_longatude, location_latitude))
 
 if __name__ == '__main__':

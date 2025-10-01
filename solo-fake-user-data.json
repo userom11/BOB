@@ -1,0 +1,17 @@
+{
+    "symptoms": [false, false, false, false, false, true, false, false],
+    "location": {
+        "coords": {
+            "accuracy": 100,
+            "longitude": 27.0,
+            "altitude": 1753.0,
+            "heading": 0,
+            "latitude": -26.0,
+            "altitudeAccuracy": 100,
+            "speed": 0
+        },
+        "mocked": false,
+        "timestamp": 1759344012824
+    },
+    "theUUID": "c2afd46c-11c3-4c06-a49c-d3f0f570859a"
+}
